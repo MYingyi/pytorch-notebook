@@ -1,0 +1,43 @@
+## 什么是Pytorch，为什么选择Pytroch？
+PyTorch是一个基于Python的库，有很强的应用前景。PyTorch用来提供一个具有灵活性的深度学习开发平台，作流程非常接近Python的科学计算库numpy，灵活易用。
+
+## Pytorch的安装：
+之前安装过了
+在官网选择合适的pytorch版本进行下载
+
+## 准备Python管理器：
+可以用Anaconda
+
+## 通过命令行安装PyTorch
+pip install torchvision,torchvision
+
+## PyTorch基础概念
+
+from __future__ import print_function
+import torch as t
+t.__version__
+
+
+# 使用[0,1]均匀分布随机初始化二维数组
+x = t.rand(5, 3)  
+x
+
+def f(x):
+    '''计算y'''
+    y = x**2 * t.exp(x)
+    return y
+
+def gradf(x):
+    '''手动求导函数'''
+    dx = 2*x*t.exp(x) + x**2*t.exp(x)
+    return dx
+    
+x = t.randn(3,4, requires_grad = True)
+y = f(x)
+y
+
+y.backward(t.ones(y.size())) # gradient形状与y一致
+x.grad
+
+# autograd的计算结果与利用公式手动计算的结果一致
+gradf(x)
